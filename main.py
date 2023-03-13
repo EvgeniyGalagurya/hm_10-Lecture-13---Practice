@@ -1,25 +1,28 @@
 from helpers import save, get_all_employers, get_employee_by_email,\
     update, save_plant, get_all_plants,\
-    get_plant_by_id, save_salon, get_salon_by_id, delete_employee
+    get_plant_by_id, save_salon, get_salon_by_id,\
+    delete_employee, save_university
 
 
 while True:
-    print("1.Add new Employee\n2.Get all Employees\n3.Get employee by email\n4. Update Employee\n5. Add plant\n6.Get all plants\n7.Get plant by id\n8.Add salon")
+    print("1. Add new Employee\n2. Get all Employees\n3. Get employee by email\n4. Update Employee\n"
+          "5. Add plant\n6. Get all plants\n7. Get plant by id\n8. Add salon\n9. Delete Employee\n"
+          "10. Add university")
     flag = int(input("Choose menu item: "))
+    print('===========================')
     if flag == 1:
         email = input("Employee email: ")
         first_name = input("Employee first name: ")
         last_name = input("Employee last name: ")
         phone_number = input("Employee phone number: ")
-        work_id = int(input("Employee work id: "))
         type = input("Employee work type: ")
+        work_id = int(input("Employee work id: "))
         save(email, first_name, last_name, phone_number, work_id, type)
     elif flag == 2:
         get_all_employers()
     elif flag == 3:
         email_to_find = input("Type email of employee which you want to find: ")
         employee = get_employee_by_email(email_to_find)
-
         print("1.Display info about place of work.\n0.Exit")
         flag_inner = int(input("Your choose: "))
         if flag_inner == 1:
@@ -41,7 +44,6 @@ while True:
     elif flag == 7:
         id = int(input("Id of plant: "))
         get_plant_by_id(id)
-
     elif flag == 8:
         name = input("Type a name of Salon: ")
         address = input("Type an address of Salon: ")
@@ -49,7 +51,11 @@ while True:
     elif flag == 9:
         id = int(input("Id of element which you want to delete: "))
         delete_employee(id)
-
-
-
-    print("===============================================================================")
+    elif flag == 10:
+        name = input("Type a name of University: ")
+        address = input("Type an address of University: ")
+        save_university(name, address)
+    elif flag > 10:
+        print('There is not menu number. Please choose again: ')
+        continue
+    break

@@ -41,6 +41,7 @@ def get_all_employers():
         print(employee["phone"])
         print(employee["work_id"])
         print(employee["type"])
+        print('------------------')
 
 
 def get_employee_by_email(email):
@@ -59,6 +60,11 @@ def get_employee_by_email(email):
 def save_plant(name, address):
     new_plant = {"name": name, "address": address}
     save_to_file(new_plant, "database/plants.json")
+
+
+def save_university(name, address):
+    new_un = {"name": name, "address": address}
+    save_to_file(new_un, "database/university.json")
 
 
 def get_all_plants():
