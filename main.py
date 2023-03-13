@@ -1,13 +1,12 @@
-from helpers import save, get_all_employers, get_employee_by_email,\
-    update, save_plant, get_all_plants,\
-    get_plant_by_id, save_salon, get_salon_by_id,\
-    delete_employee, save_university
-
+from helpers import save, get_all_employers, get_employee_by_email, \
+    update, save_plant, get_all_plants, \
+    get_plant_by_id, save_salon, get_salon_by_id, \
+    delete_employee, save_university, get_university_by_id
 
 while True:
-    print("1. Add new Employee\n2. Get all Employees\n3. Get employee by email\n4. Update Employee\n"
-          "5. Add plant\n6. Get all plants\n7. Get plant by id\n8. Add salon\n9. Delete Employee\n"
-          "10. Add university")
+    print("1. Add new Employee\n2. Get all Employees\n3. Get employee by email\n"
+          "4. Update Employee\n5. Add plant\n6. Get all plants\n7. Get plant by id\n"
+          "8. Add salon\n9. Delete Employee\n10. Add university")
     flag = int(input("Choose menu item: "))
     print('===========================')
     if flag == 1:
@@ -23,6 +22,9 @@ while True:
     elif flag == 3:
         email_to_find = input("Type email of employee which you want to find: ")
         employee = get_employee_by_email(email_to_find)
+        if employee is None:
+            print("This email not found. Please try again")
+            continue
         print("1.Display info about place of work.\n0.Exit")
         flag_inner = int(input("Your choose: "))
         if flag_inner == 1:
@@ -30,6 +32,8 @@ while True:
                 get_plant_by_id(int(employee["work_id"]))
             elif employee["type"] == "salon":
                 get_salon_by_id(int(employee["work_id"]))
+            elif employee["type"] == "university":
+                get_university_by_id(int(employee["work_id"]))
         else:
             continue
     elif flag == 4:
